@@ -1,0 +1,70 @@
+:root {
+  --bg: #0f1115;
+  --panel: #151a22;
+  --panel-2: #1c222c;
+  --text: #e6e6e6;
+  --muted: #a9b0bb;
+  --accent: #5dc27c;
+  --danger: #d75a5a;
+  --warn: #e6b35a;
+  --link: #58a6ff;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+#app { display: grid; grid-template-rows: auto 1fr auto; height: 100%; }
+
+#topbar { display: flex; gap: 12px; align-items: center; padding: 10px 14px; background: var(--panel); border-bottom: 1px solid #0b0e13; }
+#topbar .title { font-weight: 600; letter-spacing: .3px; }
+#topbar .spacer { flex: 1; }
+
+button { background: var(--panel-2); border: 1px solid #2a3240; color: var(--text); padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: background .15s ease; }
+button:hover { background: #232a36; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button.primary { background: #2a3a2e; border-color: #2f5b3e; }
+button.primary:hover { background: #2d4636; }
+
+#stage { position: relative; height: 58vh; min-height: 360px; background: #0c0f13; border-bottom: 1px solid #0b0e13; }
+#battleCanvas { width: 100%; height: 100%; display: block; }
+
+#hud { display: grid; grid-template-columns: 58% 42%; gap: 12px; padding: 12px; background: var(--panel); border-top: 1px solid #0b0e13; }
+#hud .left { display: flex; flex-direction: column; gap: 8px; }
+#hud .right { display: flex; flex-direction: column; min-height: 200px; }
+
+#heroStats { background: var(--panel-2); border: 1px solid #2a3240; padding: 10px; border-radius: 8px; white-space: pre-wrap; }
+#enemiesList { background: var(--panel-2); border: 1px solid #2a3240; padding: 10px; border-radius: 8px; white-space: pre-wrap; }
+
+#actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.block-title { color: var(--muted); margin: 2px 0 6px; font-weight: 600; letter-spacing: .3px; }
+#log { background: var(--panel-2); border: 1px solid #2a3240; padding: 8px 10px; border-radius: 8px; height: 180px; overflow: auto; white-space: pre-wrap; }
+.log-line { margin: 1px 0; }
+.log-hit { color: var(--accent); }
+.log-miss { color: var(--muted); }
+.log-warn { color: var(--warn); }
+.log-bad { color: var(--danger); }
+
+#overlay { position: fixed; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.55); }
+#overlay.hidden { display: none; }
+.modal { background: var(--panel); border: 1px solid #2a3240; border-radius: 10px; padding: 16px; width: min(680px, 92vw); box-shadow: 0 15px 60px rgba(0,0,0,.45); }
+.modal .title { font-weight: 700; margin-bottom: 8px; }
+.modal .desc { color: var(--muted); margin-bottom: 12px; }
+.modal .row { display: flex; gap: 10px; flex-wrap: wrap; }
+.tag { display: inline-block; font-size: 12px; padding: 2px 6px; border-radius: 999px; background: #263144; color: #c6d4ee; border: 1px solid #334259; margin-right: 6px; }
+.kpi { display: inline-block; margin-right: 10px; }
+.sep { color: #3a4252; margin: 0 6px; }
+
+.hint { color: var(--muted); font-size: 12px; }
+.muted { color: var(--muted); }
+.ok { color: var(--accent); }
+.bad { color: var(--danger); }
+
+/* Health bars in canvas */
+.hpbar { height: 6px; background: #3a3a3a; border-radius: 4px; overflow: hidden; }
+.hpbar > span { display: block; height: 100%; background: linear-gradient(90deg, #64d488, #2ea653); }
+
+/* Small utility for inline buttons in modals */
+.choices { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
